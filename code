@@ -1,0 +1,24 @@
+@bot.command(pass_context=True, help=locationH)
+async def reg(ctx):
+
+    embed = discord.Embed(
+        description = 'Choose a server location:',
+        colour = 0xff8000
+    )
+
+    command = ctx.message.content
+    message = command.split(' ', 1)[1]
+
+    server = ctx.message.server
+
+    if message == ('1'):
+        await bot.edit_server(server=server, region='eu-central')
+        await bot.say('You chose eu-central')
+    elif message == ('2'):
+        await bot.edit_server(server=server, region='eu-west')
+        await bot.say('You chose eu-west')
+    elif message == ('3'):
+        await bot.edit_server(server=server, region='russia')
+        await bot.say('You chose russia')
+    else:
+        await bot.say('invalid value')
